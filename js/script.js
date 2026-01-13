@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loadDataBtn) {
                     loadDataBtn.remove();
                 }
+
+                // Устанавливаем обработчики событий для фильтров после загрузки таблицы
+                setTimeout(setupFilterEventListeners, 100);
             })
             .catch(error => {
                 console.error('Ошибка при загрузке или парсинге файла:', error);
@@ -240,9 +243,17 @@ function filterTable() {
 
 // Функция для настройки обработчиков событий фильтров
 function setupFilterEventListeners() {
+    // Удаляем предыдущие обработчики, если они были
     const filterInputs = document.querySelectorAll('.filter-input');
     filterInputs.forEach(input => {
-        input.removeEventListener('input', handleFilterInput); // Удаляем старые обработчики, если есть
+        // Удаляем все обработчики событий для избежания дублирования
+        const newInput = input.cloneNode(true);
+        input.parentNode.replaceChild(newInput, input);
+    });
+
+    // Теперь добавляем обработчики к новым элементам
+    const newFilterInputs = document.querySelectorAll('.filter-input');
+    newFilterInputs.forEach(input => {
         input.addEventListener('input', handleFilterInput);
     });
 }
