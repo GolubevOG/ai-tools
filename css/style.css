@@ -8,6 +8,12 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    color: #e9ecef;
+    background-color: #121212;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
     color: #333;
     background-color: #f8f9fa;
 }
@@ -20,7 +26,7 @@ body {
 
 /* Стили шапки */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -45,8 +51,12 @@ main {
 .data-table h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #495057;
+    color: #adb5bd;
     font-size: 1.8rem;
+}
+
+body.light-mode .data-table h2 {
+    color: #495057;
 }
 
 /* Стили таблицы */
@@ -54,52 +64,109 @@ main {
     width: 100%;
     border-collapse: collapse;
     margin: 0 auto;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
+    font-size: 0.9rem;
+}
+
+body.light-mode .ai-tools-table {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ai-tools-table th {
-    background-color: #495057;
+    background-color: #2c3e50;
     color: white;
-    padding: 1rem;
+    padding: 0.8rem;
     text-align: left;
     font-weight: 600;
     position: sticky;
     top: 0;
 }
 
+body.light-mode .ai-tools-table th {
+    background-color: #495057;
+}
+
 .ai-tools-table td {
-    padding: 1rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid #444;
+    vertical-align: top;
+}
+
+body.light-mode .ai-tools-table td {
     border-bottom: 1px solid #dee2e6;
 }
 
 .ai-tools-table tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+body.light-mode .ai-tools-table tr:nth-child(even) {
     background-color: #f8f9fa;
 }
 
 .ai-tools-table tr:hover {
-    background-color: #e9ecef;
+    background-color: #3a3a3a;
     transition: background-color 0.2s ease;
 }
 
+body.light-mode .ai-tools-table tr:hover {
+    background-color: #e9ecef;
+}
+
 .ai-tools-table a {
-    color: #667eea;
+    color: #6bb3ff;
     text-decoration: none;
+    font-weight: 500;
+}
+
+body.light-mode .ai-tools-table a {
+    color: #667eea;
 }
 
 .ai-tools-table a:hover {
     text-decoration: underline;
 }
 
+/* Стили для переключателя темы */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .theme-toggle {
+    background-color: #495057;
+}
+
 /* Стили футера */
 footer {
-    background-color: #343a40;
-    color: white;
+    background-color: #1a1a1a;
+    color: #adb5bd;
     text-align: center;
     padding: 1.5rem 0;
     margin-top: 2rem;
+}
+
+body.light-mode footer {
+    background-color: #343a40;
+    color: white;
 }
 
 /* Адаптивность */
@@ -113,12 +180,18 @@ footer {
     }
 
     .ai-tools-table {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .ai-tools-table th,
     .ai-tools-table td {
-        padding: 0.7rem;
+        padding: 0.6rem;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
 
@@ -132,11 +205,19 @@ footer {
     }
 
     .ai-tools-table {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .ai-tools-table th,
     .ai-tools-table td {
-        padding: 0.5rem;
+        padding: 0.4rem;
+    }
+
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        top: 10px;
+        right: 10px;
     }
 }
