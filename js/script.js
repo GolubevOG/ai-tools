@@ -165,6 +165,9 @@ function parseMarkdownTable(markdown) {
     // Добавляем фильтры над таблицей
     html = addFilters() + html;
 
+    // После добавления HTML, устанавливаем обработчики событий для фильтров
+    setTimeout(setupFilterEventListeners, 0);
+
     return html;
 }
 
@@ -235,9 +238,16 @@ function filterTable() {
     });
 }
 
-// Добавляем обработчики событий для фильтров
-document.addEventListener('input', function(e) {
-    if (e.target.classList.contains('filter-input')) {
-        filterTable();
-    }
-});
+// Функция для настройки обработчиков событий фильтров
+function setupFilterEventListeners() {
+    const filterInputs = document.querySelectorAll('.filter-input');
+    filterInputs.forEach(input => {
+        input.removeEventListener('input', handleFilterInput); // Удаляем старые обработчики, если есть
+        input.addEventListener('input', handleFilterInput);
+    });
+}
+
+// Обработчик ввода в фильтр
+function handleFilterInput(e) {
+    filterTable();
+}
