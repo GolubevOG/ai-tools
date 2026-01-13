@@ -1,42 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tableContainer = document.getElementById('table-container');
+    const loadDataBtn = document.getElementById('load-data-btn');
 
-    // Загружаем markdown файл
-    fetch('./All_data.md')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            // Парсим markdown таблицу
-            const tableHtml = parseMarkdownTable(data);
-            tableContainer.innerHTML = tableHtml;
-        })
-        .catch(error => {
-            console.error('Ошибка при загрузке или парсинге файла:', error);
-            tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${error.message}</p>`;
+    // Функция для загрузки данных
+    const loadData = () => {
+        tableContainer.innerHTML = '<p>Загрузка данных...</p>';
 
-            // Попробуем загрузить файл с другого пути (для GitHub Pages)
-            setTimeout(() => {
-                fetch('/ai-tools/All_data.md')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        const tableHtml = parseMarkdownTable(data);
-                        tableContainer.innerHTML = tableHtml;
-                    })
-                    .catch(secondError => {
-                        console.error('Ошибка при загрузке файла со второго пути:', secondError);
-                        tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${secondError.message}</p>`;
-                    });
-            }, 1000);
-        });
+        fetch('./All_data.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Парсим markdown таблицу
+                const tableHtml = parseMarkdownTable(data);
+                tableContainer.innerHTML = tableHtml;
+
+                // Удаляем кнопку после успешной загрузки
+                if (loadDataBtn) {
+                    loadDataBtn.remove();
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке или парсинге файла:', error);
+                tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${error.message}</p>`;
+
+                // Попробуем загрузить файл с другого пути (для GitHub Pages)
+                setTimeout(() => {
+                    fetch('/ai-tools/All_data.md')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            const tableHtml = parseMarkdownTable(data);
+                            tableContainer.innerHTML = tableHtml;
+
+                            // Удаляем кнопку после успешной загрузки
+                            if (loadDataBtn) {
+                                loadDataBtn.remove();
+                            }
+                        })
+                        .catch(secondError => {
+                            console.error('Ошибка при загрузке файла со второго пути:', secondError);
+                            tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${secondError.message}</p>`;
+                        });
+                }, 1000);
+            });
+    };
+
+    // Добавляем обработчик события для кнопки
+    if (loadDataBtn) {
+        loadDataBtn.addEventListener('click', loadData);
+    }
 });
 
 // Функция для парсинга markdown таблицы
