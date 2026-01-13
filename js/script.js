@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Функция для загрузки данных
     const loadData = () => {
+        // Показываем индикатор загрузки
         tableContainer.innerHTML = '<p>Загрузка данных...</p>';
 
         fetch('./All_data.md')
@@ -52,31 +53,20 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Ошибка при загрузке или парсинге файла:', error);
-                tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${error.message}</p>`;
 
-                // Попробуем загрузить файл с другого пути (для GitHub Pages)
-                setTimeout(() => {
-                    fetch('/ai-tools/All_data.md')
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            return response.text();
-                        })
-                        .then(data => {
-                            const tableHtml = parseMarkdownTable(data);
-                            tableContainer.innerHTML = tableHtml;
+                // Показываем сообщение об ошибке
+                tableContainer.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <p style="color: #ff6b6b; font-size: 1.1rem; margin-bottom: 15px;">Ошибка при загрузке данных: ${error.message}</p>
+                        <button id="retry-load-btn" class="btn-primary">Повторить попытку</button>
+                    </div>
+                `;
 
-                            // Удаляем кнопку после успешной загрузки
-                            if (loadDataBtn) {
-                                loadDataBtn.remove();
-                            }
-                        })
-                        .catch(secondError => {
-                            console.error('Ошибка при загрузке файла со второго пути:', secondError);
-                            tableContainer.innerHTML = `<p>Ошибка при загрузке данных: ${secondError.message}</p>`;
-                        });
-                }, 1000);
+                // Добавляем обработчик для кнопки повторной попытки
+                const retryBtn = document.getElementById('retry-load-btn');
+                if (retryBtn) {
+                    retryBtn.addEventListener('click', loadData);
+                }
             });
     };
 
