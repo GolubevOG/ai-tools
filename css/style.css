@@ -131,6 +131,311 @@ body.light-mode .ai-tools-table a {
     text-decoration: underline;
 }
 
+/* Стили для фильтров */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #adb5bd;
+}
+
+body.light-mode .filter-group label {
+    color: #495057;
+}
+
+.filter-input {
+    padding: 8px 12px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #e9ecef;
+    width: 200px;
+}
+
+body.light-mode .filter-input {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ced4da;
+}
+
+/* Стили для тегов */
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+/* Цвета для тегов */
+.tag-tekst { background-color: #ff6b6b; color: white; }
+.tag-izobrazheniya { background-color: #4ecdc4; color: white; }
+.tag-video { background-color: #45b7d1; color: white; }
+.tag-dokumenty { background-color: #96ceb4; color: white; }
+.tag-multimodal { background-color: #feca57; color: black; }
+.tag-analiz { background-color: #ff9ff3; color: black; }
+.tag-objasnenie { background-color: #54a0ff; color: white; }
+.tag-kod { background-color: #5f27cd; color: white; }
+.tag-reshenie-zadach { background-color: #00d2d3; color: white; }
+.tag-logika { background-color: #ff6348; color: white; }
+.tag-obuchenie { background-color: #2ed573; color: white; }
+.tag-programmirovanie { background-color: #ffa502; color: black; }
+.tag-faily { background-color: #3742fa; color: white; }
+.tag-muzyka { background-color: #eccc68; color: black; }
+.tag-rassuzhdeniya { background-color: #7bed9f; color: black; }
+.tag-bazovye-funkcii { background-color: #ff6b6b; color: white; }
+.tag-poisk { background-color: #c44569; color: white; }
+.tag-kitaiskii { background-color: #7b68ee; color: white; }
+.tag-alternativa { background-color: #f368e0; color: white; }
+.tag-dlinnyi-kontekst { background-color: #0abde3; color: white; }
+.tag-prezentacii { background-color: #ff9f43; color: white; }
+.tag-bez-registracii { background-color: #10ac84; color: white; }
+.tag-eksperimentalnyi { background-color: #ee5a24; color: white; }
+.tag-playground { background-color: #0abde3; color: white; }
+.tag-termina { background-color: #3742fa; color: white; }
+.tag-retro { background-color: #2ed573; color: white; }
+.tag-atmosfernii { background-color: #ff6b6b; color: white; }
+.tag-dlya-gikov { background-color: #c44569; color: white; }
+.tag-integraciya { background-color: #7bed9f; color: black; }
+.tag-google-ekosistema { background-color: #ffa502; color: black; }
+.tag-issledovaniya { background-color: #5f27cd; color: white; }
+.tag-otkrytyi { background-color: #00d2d3; color: black; }
+.tag-bazovyi { background-color: #ff9ff3; color: black; }
+.tag-uluchshenie { background-color: #54a0ff; color: white; }
+.tag-rasshirenie { background-color: #2ed573; color: white; }
+.tag-optimizaciya { background-color: #ff6b6b; color: white; }
+.tag-genrator { background-color: #c44569; color: white; }
+.tag-detalirovanie { background-color: #7bed9f; color: black; }
+.tag-shablony { background-color: #ffa502; color: black; }
+.tag-konstruktor { background-color: #5f27cd; color: white; }
+.tag-vizualnyi { background-color: #00d2d3; color: black; }
+.tag-nabor { background-color: #ff9ff3; color: black; }
+.tag-brending { background-color: #54a0ff; color: white; }
+.tag-detector-ii { background-color: #2ed573; color: white; }
+.tag-shutki { background-color: #ff6b6b; color: white; }
+.tag-pereska { background-color: #c44569; color: white; }
+.tag-youtube { background-color: #7bed9f; color: black; }
+.tag-statii { background-color: #ffa502; color: black; }
+.tag-summarizaciya { background-color: #5f27cd; color: white; }
+.tag-kratko { background-color: #00d2d3; color: black; }
+.tag-stili { background-color: #ff9ff3; color: black; }
+.tag-yandex { background-color: #54a0ff; color: white; }
+.tag-kreativ { background-color: #2ed573; color: white; }
+.tag-analiz-dannykh { background-color: #ff6b6b; color: white; }
+.tag-tablicy { background-color: #c44569; color: white; }
+.tag-vopros-otvet { background-color: #7bed9f; color: black; }
+.tag-obrabotka { background-color: #ffa502; color: black; }
+.tag-agent { background-color: #5f27cd; color: white; }
+.tag-avtomatizaciya { background-color: #00d2d3; color: black; }
+.tag-cepochki-deistvii { background-color: #ff9ff3; color: black; }
+.tag-zadachi { background-color: #54a0ff; color: white; }
+.tag-igry { background-color: #2ed573; color: white; }
+.tag-testy { background-color: #ff6b6b; color: white; }
+.tag-krossvordy { background-color: #c44569; color: white; }
+.tag-kartochki { background-color: #7bed9f; color: black; }
+.tag-interaktiv { background-color: #ffa502; color: black; }
+.tag-obrazovanie { background-color: #5f27cd; color: white; }
+.tag-prilozheniya { background-color: #00d2d3; color: black; }
+.tag-saiti { background-color: #ff9ff3; color: black; }
+.tag-prototipy { background-color: #54a0ff; color: white; }
+.tag-idei { background-color: #2ed573; color: white; }
+.tag-alfa { background-color: #ff6b6b; color: white; }
+.tag-eksperimentalnyi { background-color: #c44569; color: white; }
+.tag-bez-ogranichenii { background-color: #7bed9f; color: black; }
+.tag-gamedev { background-color: #ffa502; color: black; }
+.tag-vibe-code { background-color: #5f27cd; color: white; }
+.tag-kompozitor { background-color: #00d2d3; color: black; }
+.tag-emocionalnaia { background-color: #ff9ff3; color: black; }
+.tag-treki { background-color: #54a0ff; color: white; }
+.tag-onlain { background-color: #2ed573; color: white; }
+.tag-generatory { background-color: #ff6b6b; color: white; }
+.tag-besplatno { background-color: #c44569; color: white; }
+.tag-sozdanie { background-color: #7bed9f; color: black; }
+.tag-instrument { background-color: #ffa502; color: black; }
+.tag-stt { background-color: #5f27cd; color: white; }
+.tag-zametki { background-color: #00d2d3; color: black; }
+.tag-golosovoi-bloknot { background-color: #ff9ff3; color: black; }
+.tag-bystrii { background-color: #54a0ff; color: white; }
+.tag-prostoi { background-color: #2ed573; color: white; }
+.tag-diktovka { background-color: #ff6b6b; color: white; }
+.tag-tochnyi { background-color: #c44569; color: white; }
+.tag-dlinnye-teksty { background-color: #7bed9f; color: black; }
+.tag-russkii { background-color: #ffa502; color: black; }
+.tag-tts { background-color: #5f27cd; color: white; }
+.tag-sintez { background-color: #00d2d3; color: black; }
+.tag-golosa { background-color: #ff9ff3; color: black; }
+.tag-razmetka { background-color: #54a0ff; color: white; }
+.tag-mnozhhestvo-yazykov { background-color: #2ed573; color: white; }
+.tag-realistichnyi { background-color: #ff6b6b; color: white; }
+.tag-kniga { background-color: #c44569; color: white; }
+.tag-programmirovanie { background-color: #7bed9f; color: black; }
+.tag-vibe-coding { background-color: #ffa502; color: black; }
+.tag-filosofiia { background-color: #5f27cd; color: white; }
+.tag-blog { background-color: #00d2d3; color: black; }
+.tag-stati { background-color: #ff9ff3; color: black; }
+.tag-ii { background-color: #54a0ff; color: white; }
+.tag-tehnologii { background-color: #2ed573; color: white; }
+.tag-sergei-markov { background-color: #ff6b6b; color: white; }
+.tag-roadmap { background-color: #c44569; color: white; }
+.tag-planirovanie { background-color: #7bed9f; color: black; }
+.tag-personalnyi { background-color: #ffa502; color: black; }
+.tag-kurs { background-color: #5f27cd; color: white; }
+.tag-vizualizaciia { background-color: #00d2d3; color: black; }
+.tag-transformer { background-color: #ff9ff3; color: black; }
+.tag-gpt-2 { background-color: #54a0ff; color: white; }
+.tag-arhitektura { background-color: #2ed573; color: white; }
+.tag-interaktiv { background-color: #ff6b6b; color: white; }
+.tag-gaid { background-color: #c44569; color: white; }
+.tag-shablony { background-color: #7bed9f; color: black; }
+.tag-tablica { background-color: #ffa502; color: black; }
+.tag-prakticheskoe-rukovodstvo { background-color: #5f27cd; color: white; }
+.tag-praktika { background-color: #00d2d3; color: black; }
+.tag-t-zh { background-color: #ff9ff3; color: black; }
+.tag-kniga { background-color: #54a0ff; color: white; }
+.tag-kurs { background-color: #2ed573; color: white; }
+.tag-kurs { background-color: #ff6b6b; color: white; }
+.tag-gramotnost { background-color: #c44569; color: white; }
+.tag-pedagogi { background-color: #7bed9f; color: black; }
+.tag-studenty { background-color: #ffa502; color: black; }
+.tag-anthropic { background-color: #5f27cd; color: white; }
+.tag-claude { background-color: #00d2d3; color: black; }
+.tag-kurs { background-color: #ff9ff3; color: black; }
+.tag-chatgpt { background-color: #54a0ff; color: white; }
+.tag-prepodavateli { background-color: #2ed573; color: white; }
+.tag-k-12 { background-color: #ff6b6b; color: white; }
+.tag-ssha { background-color: #c44569; color: white; }
+.tag-kurs { background-color: #7bed9f; color: black; }
+.tag-gramotnost { background-color: #ffa502; color: black; }
+.tag-pedagogi { background-color: #5f27cd; color: white; }
+.tag-studenty { background-color: #00d2d3; color: black; }
+.tag-anthropic { background-color: #ff9ff3; color: black; }
+.tag-claude { background-color: #54a0ff; color: white; }
+.tag-autosubtitry { background-color: #2ed573; color: white; }
+.tag-perevod: background-color: #ff6b6b; color: white; }
+.tag-chrome { background-color: #c44569; color: white; }
+.tag-tyutory { background-color: #7bed9f; color: black; }
+.tag-kursy { background-color: #ffa502; color: black; }
+.tag-dialog { background-color: #5f27cd; color: white; }
+.tag-personalizaciya { background-color: #00d2d3; color: black; }
+.tag-kvesty { background-color: #ff9ff3; color: black; }
+.tag-interaktiv { background-color: #54a0ff; color: white; }
+.tag-issledovaniya { background-color: #2ed573; color: white; }
+.tag-kurs { background-color: #ff6b6b; color: white; }
+.tag-chatgpt { background-color: #c44569; color: white; }
+.tag-prepodavateli { background-color: #7bed9f; color: black; }
+.tag-k-12 { background-color: #ffa502; color: black; }
+.tag-obrazovatelnaia-sistema { background-color: #5f27cd; color: white; }
+.tag-kurs { background-color: #00d2d3; color: black; }
+.tag-gramotnost { background-color: #ff9ff3; color: black; }
+.tag-pedagogi { background-color: #54a0ff; color: white; }
+.tag-studenty { background-color: #2ed573; color: white; }
+.tag-anthropic { background-color: #ff6b6b; color: white; }
+.tag-claude { background-color: #c44569; color: white; }
+.tag-subtitry: background-color: #7bed9f; color: black; }
+.tag-perevod: background-color: #ffa502; color: black; }
+.tag-brauzer: background-color: #5f27cd; color: white; }
+.tag-konstruktor { background-color: #00d2d3; color: black; }
+.tag-dizain { background-color: #ff9ff3; color: black; }
+.tag-generaciia { background-color: #54a0ff; color: white; }
+.tag-ideia-v-slaidy { background-color: #2ed573; color: white; }
+.tag-pptx { background-color: #ff6b6b; color: white; }
+.tag-vstroeno-v-chat-bota { background-color: #c44569; color: white; }
+.tag-predlozhenie { background-color: #7bed9f; color: black; }
+.tag-bistro { background-color: #ffa502; color: black; }
+.tag-bez-registracii { background-color: #5f27cd; color: white; }
+.tag-bolshie-limiti { background-color: #00d2d3; color: black; }
+.tag-gibkie-usloviia-ispolzovaniia { background-color: #ff9ff3; color: black; }
+.tag-prostoi { background-color: #54a0ff; color: white; }
+.tag-ogranicheniia { background-color: #2ed573; color: white; }
+.tag-minimalistichnyi-funkcional { background-color: #ff6b6b; color: white; }
+.tag-poisk { background-color: #c44569; color: white; }
+.tag-citirovanie { background-color: #7bed9f; color: black; }
+.tag-istochniki { background-color: #ffa502; color: black; }
+.tag-tochnost { background-color: #5f27cd; color: white; }
+.tag-analiz { background-color: #00d2d3; color: black; }
+.tag-konkurent-tradicionnogo-poiska { background-color: #ff9ff3; color: black; }
+.tag-proaktivno: background-color: #54a0ff; color: white; }
+.tag-utochniaiushchie-voprosy { background-color: #2ed573; color: white; }
+.tag-nauchnyi { background-color: #ff6b6b; color: white; }
+.tag-stati { background-color: #c44569; color: white; }
+.tag-issledovatelkaia-rabota { background-color: #7bed9f; color: black; }
+.tag-akademicheskii { background-color: #ffa502; color: black; }
+.tag-spetsializirovannyi-dlia-nauki { background-color: #5f27cd; color: white; }
+.tag-poisk-po-video { background-color: #00d2d3; color: black; }
+.tag-analiz-kontenta: background-color: #ff9ff3; color: black; }
+.tag-poisk-po-video: background-color: #54a0ff; color: white; }
+.tag-unikalnaia-vozmozhnost: background-color: #2ed573; color: white; }
+.tag-testy { background-color: #ff6b6b; color: white; }
+.tag-generator { background-color: #c44569; color: white; }
+.tag-proverka-znanii { background-color: #7bed9f; color: black; }
+.tag-obrazovanie { background-color: #ffa502; color: black; }
+.tag-novaia-shkola { background-color: #5f27cd; color: white; }
+.tag-video: background-color: #00d2d3; color: black; }
+.tag-pozdravleniia { background-color: #ff9ff3; color: black; }
+.tag-personalizaciia { background-color: #54a0ff; color: white; }
+.tag-rozvlecheniia { background-color: #2ed573; color: white; }
+.tag-angliiskii: background-color: #ff6b6b; color: white; }
+.tag-sezonnyi-rozvlekatelnyi-servis { background-color: #c44569; color: white; }
+.tag-infografi { background-color: #7bed9f; color: black; }
+.tag-vizualizaciia { background-color: #ffa502; color: black; }
+.tag-dannye { background-color: #5f27cd; color: white; }
+.tag-trebuetsia-vpn { background-color: #00d2d3; color: black; }
+.tag-nedostupen-bez-vpn: background-color: #ff9ff3; color: black; }
+.tag-vpn: background-color: #54a0ff; color: white; }
+.tag-trebuetsia: background-color: #2ed573; color: white; }
+.tag-prodvinutyi { background-color: #ff6b6b; color: white; }
+.tag-ofitsialnyi-priemnik-bard: background-color: #c44569; color: white; }
+
+/* Общие стили для светлой темы */
+body.light-mode .tag {
+    color: white;
+}
+
+body.light-mode .tag-perevod,
+body.light-mode .tag-razmetka,
+body.light-mode .tag-mnozhhestvo-yazykov,
+body.light-mode .tag-realistichnyi,
+body.light-mode .tag-interaktiv,
+body.light-mode .tag-bystrii,
+body.light-mode .tag-prostoi,
+body.light-mode .tag-tochnyi,
+body.light-mode .tag-dlinnye-teksty,
+body.light-mode .tag-russkii,
+body.light-mode .tag-golosa,
+body.light-mode .tag-personalnyi,
+body.light-mode .tag-prakticheskoe-rukovodstvo,
+body.light-mode .tag-praktika,
+body.light-mode .tag-t-zh,
+body.light-mode .tag-k-12,
+body.light-mode .tag-ssha,
+body.light-mode .tag-autosubtitry,
+body.light-mode .tag-perevod,
+body.light-mode .tag-perevod,
+body.light-mode .tag-brauzer,
+body.light-mode .tag-bistro,
+body.light-mode .tag-bez-registracii,
+body.light-mode .tag-minimalistichnyi-funkcional,
+body.light-mode .tag-proaktivno,
+body.light-mode .tag-unikalnaia-vozmozhnost,
+body.light-mode .tag-angliiskii,
+body.light-mode .tag-sezonnyi-rozvlekatelnyi-servis {
+    color: black;
+}
+
 /* Стили для переключателя темы */
 .theme-toggle {
     position: fixed;

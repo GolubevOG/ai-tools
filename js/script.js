@@ -144,8 +144,13 @@ function parseMarkdownTable(markdown) {
                 cells.forEach((cell, index) => {
                     // Пропускаем столбец "Ссылка" при отображении
                     if (headers[index] && headers[index].toLowerCase().trim() !== 'ссылка') {
-                        // Обрабатываем ссылки в ячейках
+                        // Обрабатываем содержимое ячейки
                         let processedCell = cell.trim();
+
+                        // Обрабатываем теги - выделяем их цветом
+                        if (index === 4) { // Предполагаем, что теги находятся в 5-м столбце (индекс 4)
+                            processedCell = highlightTags(processedCell);
+                        }
 
                         // Проверяем, является ли ячейка ссылкой
                         if (processedCell.match(/^https?:\/\//)) {
@@ -167,5 +172,82 @@ function parseMarkdownTable(markdown) {
 
     html += '</tbody></table>';
 
+    // Добавляем фильтры над таблицей
+    html = addFilters() + html;
+
     return html;
 }
+
+// Функция для выделения тегов цветом
+function highlightTags(tagString) {
+    if (!tagString) return '';
+
+    // Разбиваем строку тегов на отдельные теги
+    const tags = tagString.split(',').map(tag => tag.trim()).filter(tag => tag);
+
+    // Создаем HTML для каждого тега с соответствующим классом
+    return tags.map(tag => {
+        // Преобразуем тег в формат, подходящий для CSS класса
+        const cssClass = 'tag-' + tag.toLowerCase()
+            .replace(/\s+/g, '-')  // Заменяем пробелы на дефисы
+            .replace(/[^\w-]/g, ''); // Убираем все символы кроме букв, цифр и дефисов
+
+        return `<span class="tag ${cssClass}">${tag}</span>`;
+    }).join('');
+}
+
+// Функция для добавления фильтров
+function addFilters() {
+    return `
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="filter-category">Категория:</label>
+                <input type="text" id="filter-category" class="filter-input" placeholder="Фильтр по категории..." data-column="2">
+            </div>
+            <div class="filter-group">
+                <label for="filter-tags">Теги:</label>
+                <input type="text" id="filter-tags" class="filter-input" placeholder="Фильтр по тегам..." data-column="4">
+            </div>
+            <div class="filter-group">
+                <label for="filter-conditions">Условия:</label>
+                <input type="text" id="filter-conditions" class="filter-input" placeholder="Фильтр по условиям..." data-column="5">
+            </div>
+            <div class="filter-group">
+                <label for="filter-language">Язык:</label>
+                <input type="text" id="filter-language" class="filter-input" placeholder="Фильтр по языку..." data-column="6">
+            </div>
+        </div>
+    `;
+}
+
+// Функция для фильтрации таблицы
+function filterTable() {
+    // Получаем все строки таблицы
+    const rows = document.querySelectorAll('.ai-tools-table tbody tr');
+    const filters = document.querySelectorAll('.filter-input');
+
+    rows.forEach(row => {
+        let showRow = true;
+
+        // Проверяем каждую строку по всем фильтрам
+        filters.forEach(filter => {
+            const columnIndex = parseInt(filter.dataset.column);
+            const filterValue = filter.value.toLowerCase();
+            const cellText = row.cells[columnIndex]?.textContent.toLowerCase() || '';
+
+            if (filterValue && !cellText.includes(filterValue)) {
+                showRow = false;
+            }
+        });
+
+        // Показываем или скрываем строку в зависимости от результата фильтрации
+        row.style.display = showRow ? '' : 'none';
+    });
+}
+
+// Добавляем обработчики событий для фильтров
+document.addEventListener('input', function(e) {
+    if (e.target.classList.contains('filter-input')) {
+        filterTable();
+    }
+});
