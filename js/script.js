@@ -183,12 +183,15 @@ function highlightTags(tagString) {
 
     // Создаем HTML для каждого тега с соответствующим классом
     return tags.map(tag => {
+        // Убираем решетку из начала тега, если она есть
+        const cleanTag = tag.startsWith('#') ? tag.substring(1) : tag;
+
         // Преобразуем тег в формат, подходящий для CSS класса
-        const cssClass = 'tag-' + tag.toLowerCase()
+        const cssClass = 'tag-' + cleanTag.toLowerCase()
             .replace(/\s+/g, '-')  // Заменяем пробелы на дефисы
             .replace(/[^\w-]/g, ''); // Убираем все символы кроме букв, цифр и дефисов
 
-        return `<span class="tag ${cssClass}">${tag}</span>`;
+        return `<span class="tag ${cssClass}">#${cleanTag}</span>`;
     }).join('');
 }
 
